@@ -6,7 +6,7 @@ import jakarta.xml.ws.Endpoint;
 import org.example.service.CarServiceImpl;
 import org.example.service.repository.CarRepositoryImpl;
 
-public class Server {
+public class BottomUpServer {
 
   public static void main(String[] args) {
     System.out.println("Starting CarService Web Service...");

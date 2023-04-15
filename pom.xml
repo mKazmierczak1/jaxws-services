@@ -11,13 +11,20 @@
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
+        <jax-ws.version>4.0.1</jax-ws.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
-            <version>4.0.1</version>
+            <version>${jax-ws.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-maven-plugin</artifactId>
+            <version>${jax-ws.version}</version>
         </dependency>
 
         <dependency>
@@ -41,6 +48,24 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>${jax-ws.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlDirectory>${project.basedir}/src/main/resources/</wsdlDirectory>
+                    <packageName>org.example.topdown</packageName>
+                    <sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
+                </configuration>
             </plugin>
         </plugins>
     </build>

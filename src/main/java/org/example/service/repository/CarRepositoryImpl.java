@@ -13,9 +13,9 @@ public class CarRepositoryImpl implements CarRepository {
   public CarRepositoryImpl() {
     cars = new ArrayList<>();
     cars.add(new Car(1, "Volkswagen", "Golf", 1998, 2.0f));
-    cars.add(new Car(1, "Alfa Romeo", "Giulia", 2018, 2.2f));
-    cars.add(new Car(1, "Honda", "Civic", 2005, 1.7f));
-    cars.add(new Car(1, "Audi", "A5", 2020, 2.5f));
+    cars.add(new Car(2, "Alfa Romeo", "Giulia", 2018, 2.2f));
+    cars.add(new Car(3, "Honda", "Civic", 2005, 1.7f));
+    cars.add(new Car(4, "Audi", "A5", 2020, 2.5f));
   }
 
   @Override

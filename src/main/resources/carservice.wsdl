@@ -1,0 +1,176 @@
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://service.example.org/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://service.example.org/"
+             name="CarService">
+    <xs:schema xmlns:tns="http://service.example.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.example.org/">
+        <xs:element name="CarExistsEx" type="tns:CarExistsEx"/>
+        <xs:element name="CarNotFoundEx" type="tns:CarNotFoundEx"/>
+        <xs:element name="addCar" type="tns:addCar"/>
+        <xs:element name="addCarResponse" type="tns:addCarResponse"/>
+        <xs:element name="getAllCars" type="tns:getAllCars"/>
+        <xs:element name="getAllCarsResponse" type="tns:getAllCarsResponse"/>
+        <xs:element name="getCar" type="tns:getCar"/>
+        <xs:element name="getCarResponse" type="tns:getCarResponse"/>
+        <xs:element name="removeCar" type="tns:removeCar"/>
+        <xs:element name="removeCarResponse" type="tns:removeCarResponse"/>
+        <xs:complexType name="removeCar">
+            <xs:sequence>
+                <xs:element name="arg0" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="removeCarResponse">
+            <xs:sequence/>
+        </xs:complexType>
+        <xs:complexType name="CarNotFoundEx">
+            <xs:sequence>
+                <xs:element name="message" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="getAllCars">
+            <xs:sequence/>
+        </xs:complexType>
+        <xs:complexType name="getAllCarsResponse">
+            <xs:sequence>
+                <xs:element name="return" type="tns:car" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="car">
+            <xs:sequence>
+                <xs:element name="brand" type="xs:string" minOccurs="0"/>
+                <xs:element name="engineSize" type="xs:float"/>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="manufactureYear" type="xs:int"/>
+                <xs:element name="model" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="addCar">
+            <xs:sequence>
+                <xs:element name="arg0" type="tns:car" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="addCarResponse">
+            <xs:sequence/>
+        </xs:complexType>
+        <xs:complexType name="CarExistsEx">
+            <xs:sequence>
+                <xs:element name="message" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="getCar">
+            <xs:sequence>
+                <xs:element name="arg0" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="getCarResponse">
+            <xs:sequence>
+                <xs:element name="return" type="tns:car" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:schema>
+    <message name="addCar">
+        <part name="parameters" element="tns:addCar"/>
+    </message>
+    <message name="addCarResponse">
+        <part name="parameters" element="tns:addCarResponse"/>
+    </message>
+    <message name="CarExistsEx">
+        <part name="fault" element="tns:CarExistsEx"/>
+    </message>
+    <message name="removeCar">
+        <part name="parameters" element="tns:removeCar"/>
+    </message>
+    <message name="removeCarResponse">
+        <part name="parameters" element="tns:removeCarResponse"/>
+    </message>
+    <message name="CarNotFoundEx">
+        <part name="fault" element="tns:CarNotFoundEx"/>
+    </message>
+    <message name="getCar">
+        <part name="parameters" element="tns:getCar"/>
+    </message>
+    <message name="getCarResponse">
+        <part name="parameters" element="tns:getCarResponse"/>
+    </message>
+    <message name="getAllCars">
+        <part name="parameters" element="tns:getAllCars"/>
+    </message>
+    <message name="getAllCarsResponse">
+        <part name="parameters" element="tns:getAllCarsResponse"/>
+    </message>
+    <portType name="CarService">
+        <operation name="addCar">
+            <input message="tns:addCar"/>
+            <output message="tns:addCarResponse"/>
+            <fault message="tns:CarExistsEx" name="CarExistsEx"/>
+        </operation>
+        <operation name="removeCar">
+            <input message="tns:removeCar"/>
+            <output message="tns:removeCarResponse"/>
+            <fault message="tns:CarNotFoundEx" name="CarNotFoundEx"/>
+        </operation>
+        <operation name="getCar">
+            <input message="tns:getCar"/>
+            <output message="tns:getCarResponse"/>
+            <fault message="tns:CarNotFoundEx" name="CarNotFoundEx"/>
+        </operation>
+        <operation name="getAllCars">
+            <input message="tns:getAllCars"/>
+            <output message="tns:getAllCarsResponse"/>
+        </operation>
+    </portType>
+    <binding name="CarServicePortBinding" type="tns:CarService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="addCar">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="CarExistsEx">
+                <soap:fault name="CarExistsEx" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="removeCar">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="CarNotFoundEx">
+                <soap:fault name="CarNotFoundEx" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getCar">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="CarNotFoundEx">
+                <soap:fault name="CarNotFoundEx" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getAllCars">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CarServiceImplService">
+        <port name="CarServicePort" binding="tns:CarServicePortBinding">
+            <soap:address location="http://localhost:8081/carservice"/>
+        </port>
+    </service>
+</definitions>
