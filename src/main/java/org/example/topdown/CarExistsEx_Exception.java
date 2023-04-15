@@ -30,6 +30,10 @@ public class CarExistsEx_Exception extends Exception {
     this.faultInfo = faultInfo;
   }
 
+  public CarExistsEx_Exception() {
+    super("This car already exists!");
+  }
+
   /**
    * @return returns fault bean: org.example.topdown.CarExistsEx
    */

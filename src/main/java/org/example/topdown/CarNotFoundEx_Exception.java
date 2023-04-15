@@ -30,6 +30,10 @@ public class CarNotFoundEx_Exception extends Exception {
     this.faultInfo = faultInfo;
   }
 
+  public CarNotFoundEx_Exception() {
+    super("No car found for given id!");
+  }
+
   /**
    * @return returns fault bean: org.example.topdown.CarNotFoundEx
    */
