@@ -11,7 +11,7 @@ public class BottomUpServer {
   public static void main(String[] args) {
     System.out.println("Starting CarService Web Service...");
 
-    var carService = new CarServiceImpl(new CarRepositoryImpl());
+    var carService = new CarServiceImpl(new CarRepositoryImpl(CarServiceImpl.MAX_SIZE));
     Endpoint.publish("http://localhost:8081/carservice", carService);
 
     try {

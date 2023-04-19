@@ -6,11 +6,14 @@ import lombok.RequiredArgsConstructor;
 import org.example.model.Car;
 import org.example.service.exceptions.CarExistsEx;
 import org.example.service.exceptions.CarNotFoundEx;
+import org.example.service.exceptions.FullListEx;
 import org.example.service.repository.CarRepository;
 
 @WebService(name = "CarService", endpointInterface = "org.example.service.CarService")
 @RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
+
+  public static final int MAX_SIZE = 6;
 
   private final CarRepository carRepository;
 
@@ -27,9 +30,15 @@ public class CarServiceImpl implements CarService {
   }
 
   @Override
-  public void addCar(Car car) throws CarExistsEx {
+  public void addCar(Car car) throws CarExistsEx, FullListEx {
     System.out.println("called addCar");
     carRepository.addCar(car);
+  }
+
+  @Override
+  public void updateCar(Car car) throws CarNotFoundEx {
+    System.out.println("called updateCar");
+    carRepository.updateCar(car);
   }
 
   @Override

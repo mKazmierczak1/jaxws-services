@@ -62,8 +62,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <wsdlDirectory>${project.basedir}/src/main/resources/</wsdlDirectory>
-                    <packageName>org.example.topdown</packageName>
+                    <wsdlDirectory>${project.basedir}/src/main/resources/v3</wsdlDirectory>
+                    <packageName>org.example.topdownv3</packageName>
                     <sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
                 </configuration>
             </plugin>

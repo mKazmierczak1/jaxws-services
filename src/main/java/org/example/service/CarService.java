@@ -6,6 +6,7 @@ import java.util.List;
 import org.example.model.Car;
 import org.example.service.exceptions.CarExistsEx;
 import org.example.service.exceptions.CarNotFoundEx;
+import org.example.service.exceptions.FullListEx;
 
 @WebService
 public interface CarService {
@@ -17,7 +18,10 @@ public interface CarService {
   Car getCar(int id) throws CarNotFoundEx;
 
   @WebMethod
-  void addCar(Car car) throws CarExistsEx;
+  void addCar(Car car) throws CarExistsEx, FullListEx;
+
+  @WebMethod
+  void updateCar(Car car) throws CarNotFoundEx;
 
   @WebMethod
   void removeCar(int id) throws CarNotFoundEx;
